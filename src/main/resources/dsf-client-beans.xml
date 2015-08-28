@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="dsfTestClient" class="org.dsf.client.DSFClient"
+		init-method="init">
+		<property name="interfaceName">
+			<value>com.taobao.huijin.bill.client.IRatingDetailService</value>
+		</property>
+		<property name="version">
+			<value>0.0.1test</value>
+		</property>
+		<property name="group" value="HUIJIN" />
+	</bean>
+
+	<!-- 
+	<bean class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean"
+		init-method="init">
+		<property name="serviceInterface">
+			<value>com.taobao.huijin.hjcommons.solution.jmx.JmxServiceHSFInvoker</value>
+		</property>
+		<property name="target">
+			<ref bean="hjbusinessJmxInvoker" />
+		</property>
+		<property name="serviceName">
+			<value>"hjbusinessJmxInvoker"</value>
+		</property>
+		<property name="serviceVersion">
+			<value>1.0.0.hjbusiness</value>
+		</property>
+		<property name="serviceGroup">
+			<value>hjbusiness</value>
+		</property>
+		<property name="serializeType">
+			<value>java</value>
+		</property>
+	</bean>
+	 -->
+</beans>

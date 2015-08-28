@@ -6,10 +6,28 @@ import java.lang.reflect.Proxy;
 
 
 public class DSFClient {
-	public String serviceName;
+	public String interfaceName;
+	public String version;
+	public String group;
 	
-	public <T> void init() {
-		Class clazz = Class.forName(serviceName);
+	public void setInterfaceName(String interfaceName) {
+		this.interfaceName = interfaceName;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+	public void setGroup(String group) {
+		this.group = group;
+	}
+	
+	
+	public void init() {
+		System.out.println("DSFClient init" + interfaceName + ";" + version + ";" + group);
+		
+	}
+	
+	public <T> T init2() throws ClassNotFoundException {
+		Class clazz = Class.forName(interfaceName);
 		InvocationHandler handler = new InvocationHandler() {
 			
 			@Override
@@ -19,7 +37,7 @@ public class DSFClient {
 				return null;
 			}
 		};
-		T t = (T) Proxy.newProxyInstance(RPC.class.getClassLoader(), new Class[] {clazz}, handler);
+		T t = (T) Proxy.newProxyInstance(DSFClient.class.getClassLoader(), new Class[] {clazz}, handler);
 		return t;
 	}
 }

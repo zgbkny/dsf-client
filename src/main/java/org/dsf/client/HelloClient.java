@@ -9,6 +9,12 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class HelloClient {
 	public void connect(String host, int port) throws Exception {
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -38,9 +44,11 @@ public class HelloClient {
 
 	public static void main(String[] args) throws Exception {
 		
-		DSFClient dsfClient = new DSFClient();
-		dsfClient.serviceName = "test.ITest";
-		dsfClient.init();
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		context.getBean("");
+		BeanDefinitionRegistry beanDefReg = (DefaultListableBeanFactory) context.getParentBeanFactory();
+		((DefaultSingletonBeanRegistry) beanDefReg).registerSingleton("", null);
+	
 		
 		HelloClient client = new HelloClient();
 		client.connect("127.0.0.1", 8000);
