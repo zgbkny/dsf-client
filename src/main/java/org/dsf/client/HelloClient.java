@@ -15,6 +15,8 @@ import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import test.ITest;
+
 public class HelloClient {
 	public void connect(String host, int port) throws Exception {
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -45,10 +47,12 @@ public class HelloClient {
 	public static void main(String[] args) throws Exception {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		context.getBean("");
+		/*context.getBean("");
 		BeanDefinitionRegistry beanDefReg = (DefaultListableBeanFactory) context.getParentBeanFactory();
 		((DefaultSingletonBeanRegistry) beanDefReg).registerSingleton("", null);
-	
+		*/
+		
+		ITest itest = new DSFClient().getProxy(ITest.class, "", 9999);
 		
 		HelloClient client = new HelloClient();
 		client.connect("127.0.0.1", 8000);

@@ -21,6 +21,22 @@ public class DSFClient {
 	}
 	
 	
+	public <T> T getProxy(final Class<T> clazz,String host,int port) {
+		
+		
+		InvocationHandler handler = new InvocationHandler() {
+			
+			@Override
+			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+				System.out.println("invoke ");
+				
+				return "";
+			}
+		};
+		T t = (T) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[] {clazz}, handler);
+		return t;
+	}
+	
 	public void init() {
 		System.out.println("DSFClient init" + interfaceName + ";" + version + ";" + group);
 		
