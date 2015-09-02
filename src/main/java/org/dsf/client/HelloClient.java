@@ -32,7 +32,8 @@ public class HelloClient {
 					ch.pipeline().addLast(new HelloClientHandler());
 				}
 			});
-
+			
+		
 			// Start the client.
 			ChannelFuture f = b.connect(host, port).sync();
 

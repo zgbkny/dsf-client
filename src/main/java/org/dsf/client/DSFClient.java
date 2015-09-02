@@ -10,6 +10,11 @@ public class DSFClient {
 	public String version;
 	public String group;
 	
+	
+	public DSFClient() {
+		
+	}
+	
 	public void setInterfaceName(String interfaceName) {
 		this.interfaceName = interfaceName;
 	}
